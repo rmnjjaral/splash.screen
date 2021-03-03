@@ -3,6 +3,10 @@
 <html>
 <head>
 	<title>Splash Screen</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+   <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
 	<style>
 		* {
 			padding: 0px;
@@ -22,8 +26,60 @@
 	</style>
 </head>
 <body>
-	<div id="maincontent">
-		Hola
-	</div>
+	<script>
+
+x= 100
+y=100
+angulo = 0;
+
+function setup() {
+  createCanvas(400, 400);
+  colorfondo = color(0,0,255,10);
+  colorBola= color(0,255,0);
+  noStroke();
+}
+
+function draw() {
+  background(colorfondo, 3);
+  /*if (keyIsPressed== true){
+    //colorfondo = rnadom(0,255)
+    x +=2;
+    angulo += 0.4;
+  } */
+  
+  if (keyIsDown(LEFT_ARROW)){
+    x -=2;
+    angulo -= 0.4;
+  }  
+  if (keyIsDown(RIGHT_ARROW)){
+    x +=2;
+    angulo += 0.4;
+  }     
+  if (keyIsDown(UP_ARROW)){
+    y -=2;
+    angulo -= 0.4;
+  }         
+  if (keyIsDown(DOWN_ARROW)){
+    y +=2;
+    angulo += 0.4;
+  }
+  fill(colorBola)
+  push()
+  translate(x,y)
+  rotate(angulo)
+  arc(0,0,30,30,0, HALF_PI)
+  pop() 
+}
+  
+function keyPressed(){
+  //colorfondo = random(0,255)
+  colorBola = color(0,255,0);
+}
+
+function keyReleased(){
+  colorBola = color(0,255,0);
+} 
+	</script>
+}
 </body>
 </html>
